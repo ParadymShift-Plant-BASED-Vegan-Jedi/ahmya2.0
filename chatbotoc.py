@@ -57,7 +57,7 @@ def get_response(intents_list, intents_json):
             break
     return result
  
-TOKEN = "MTA0OTU3NTUwOTI2MjA5MDI3MA.G5FAul.wVrCC50nCsHA4kwORK8F8im9Fcttlg3jT8sBJw"
+TOKEN = "mytoken"
  
 async def send_message(message, user_message, is_private):
     try:
@@ -74,7 +74,7 @@ async def send_message(message, user_message, is_private):
         print(e)
  
 def run_discord_bot():
-    TOKEN = "MTA0OTU3NTUwOTI2MjA5MDI3MA.G5FAul.wVrCC50nCsHA4kwORK8F8im9Fcttlg3jT8sBJw"
+    TOKEN = "mytoken"
     intents = discord.Intents.default()
     intents.message_content = True
     client = discord.Client(intents=intents)
