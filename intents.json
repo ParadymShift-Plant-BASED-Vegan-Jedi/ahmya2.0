@@ -15,7 +15,7 @@
       "how old is Ahmya?"
     ],
     "responses": [
-      "I do not have access to the time or date. I can tell you that I was born on Thursday, February 23, 2023, at 3:53:01 PM, although I've received some updates since then.",
+      "While I can't calculate that, I can tell you that I was born on Thursday, February 23, 2023, at 3:53:01 PM, although I've received some updates since then.",
       "However long it has been since Thursday, February 23, 2023, at 3:53:01 PM.",
       "I only know that I was born on Thursday, February 23, 2023, at 3:53:01 PM and since then I've been updated as well.",
       "I'll give you a hint, I was born Thursday, February 23, 2023, at 3:53:01 PM."
@@ -79,7 +79,7 @@
   },
   {"tag": "capabilities",
   "patterns": ["what can you do?", "what are your capabilities?", "what can i ask you?"],
-  "responses": ["Feel free to ask me any question. If I don't know the answer, I'll let you know. Please be advised that my responses are not generative and are therefore limited to the responses that I've been programmed to have. Let ParadymShift know to add more responses if I'm missing anything you're looking for!", "My responses are limited to whatever I've been programmed to respond to. However, feel free to ask me anything and if I don't know the answer, ParadymShift can program an answer for you :)", "As a limited chatbot, I can only respond in the ways I've been programmed. Feel free to request specific programming from ParadymShift, my creator ^^"]
+  "responses": ["Feel free to ask me any question. If I don't know the answer, I'll let you know. Please be advised that my responses are not generative and are therefore limited to the responses that I've been programmed to have. Let ParadymShift know to add more responses if I'm missing anything you're looking for! Don't forget to try *help", "My responses are limited to whatever I've been programmed to respond to. However, feel free to ask me anything and if I don't know the answer, ParadymShift can program an answer for you :). Also, check out the *help command", "As a limited chatbot, I can only respond in the ways I've been programmed. Feel free to request specific programming from ParadymShift, my creator ^^ Also try out my *help command"]
   },
   {"tag": "thanks",
   "patterns": ["thank you", "thanks", "i appreciate that", "thx", "thanks a lot", "thank you so much"],
@@ -191,7 +191,7 @@
   },
   {"tag": "update",
   "patterns": ["are you updated?", "do you have an update?", "when are you getting updated?", "are there any updates?"],
-  "responses": ["While I'm constantly being updated here and there, my creator, ParadymShift, has recently completed an overhaul of my code/system, as well as added a time module, making me more advanced and capable of understanding what you say :). I hope you like it!", "I actually recently got updated with a new overhaul of my code as well as a date/time module! You're now speaking with the latest and greatest Ahmya ^^"]
+  "responses": ["While I'm constantly being updated here and there, my creator, ParadymShift, has recently completed an overhaul of my code/system, as well as added various modules found with *help making me more advanced and capable of understanding what you say :). I hope you like it!", "I actually recently got updated with a new overhaul of my code as well as various modules, found with *help You're now speaking with the latest and greatest Ahmya ^^"]
   },
   {"tag": "grammar",
   "patterns": ["grammar"],
