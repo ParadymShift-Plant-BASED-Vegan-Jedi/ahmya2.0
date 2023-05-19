@@ -57,7 +57,7 @@ def get_response(intents_list, intents_json):
             break
     return result
  
-TOKEN = "MTA0OTU3NTUwOTI2MjA5MDI3MA.Ge0X0i.zooQXQ2Ik4Ik_HIfZ-83mg8LWumBWYzUXqvkNs"
+TOKEN = "MTA0OTU3NTUwOTI2MjA5MDI3MA.GNmbmv.3FtPXFa8266TfIkrzpjLBbNIDoUR2hMMK-1-EM"
  
 async def send_message(message, user_message, is_private):
     try:
@@ -74,7 +74,7 @@ async def send_message(message, user_message, is_private):
         print(e)
  
 def run_discord_bot():
-    TOKEN = "MTA0OTU3NTUwOTI2MjA5MDI3MA.Ge0X0i.zooQXQ2Ik4Ik_HIfZ-83mg8LWumBWYzUXqvkNs"
+    TOKEN = "MTA0OTU3NTUwOTI2MjA5MDI3MA.GNmbmv.3FtPXFa8266TfIkrzpjLBbNIDoUR2hMMK-1-EM"
     intents = discord.Intents.default()
     intents.message_content = True
     client = discord.Client(intents=intents)
@@ -107,7 +107,7 @@ def run_discord_bot():
                     f'The current time in {location} is {current_time}')  # Send the special response
             elif cmdarry[0] == '*help':
                 await message.channel.send(
-                    "Here is a list of available commands:\n\n*time timezonehere\ntell the time in a given timezone\n\n*ltmzn\nshows a link to a list of valid time-zones.\n\n*weather yourlocationhere\nshows the current temperature and weather conditions for the city in question\n\n*translate langcodehere translationtexthere\ntranslate text into various languages\n\n*langlist\nsends a list of all valid language codes to translate to\n\n*define wordtodefinehere\ndefines a word\n\n*aniquo\nsends a random anime quote\n\n*roll\nrolls a die\n\n*flip\nflips a coin\n\n*rate thingtoratehere\nrates someone or something from 1-10"
+                    "Here is a list of available commands:\n\n*time timezonehere\ntell the time in a given timezone\n\n*ltmzn\nshows a link to a list of valid time-zones.\n\n*weather yourlocationhere\nshows the current temperature and weather conditions for the city in question\n\n*translate langcodehere translationtexthere\ntranslate text into various languages\n\n*langlist\nsends a list of all valid language codes to translate to\n\n*define wordtodefinehere\ndefines a word\n\n*summarize yourinformationhere\nsummarizes a body of text\n\n*aniquo\nsends a random anime quote\n\n*roll\nrolls a die\n\n*flip\nflips a coin\n\n*rate thingtoratehere\nrates someone or something from 1-10"
                 )
             elif cmdarry[0] == '*tmznl':
                 time_zones = pytz.all_timezones
@@ -237,6 +237,30 @@ def run_discord_bot():
             elif cmdarry[0] == '*anicat':
                 await message.channel.send(
                     'Here is a list of all of the anime picture categories:\nwaifu\nneko\nshinobu\nmegumin\nbully\ncuddle\ncry\nhug\nawoo\nkiss\nlick\npat\nsmug\nbonk\nyeet\nblush\nsmile\nwave\nhighfive\nhandhold\nnom\nbite\nglomp\nslap\nkill\nkick\nhappy\nwink\npoke\ndance\ncringe'
+                )
+            elif cmdarry[0] == '*summarize':
+                s_text_body = " ".join(cmdarry[1:])
+                
+                summary_url = "https://text-analysis12.p.rapidapi.com/summarize-text/api/v1.1"
+
+                summary_payload = {
+	                "language": "english",
+	                "summary_percent": 50,
+	                "text": f'{s_text_body}'
+                }
+                summary_headers = {
+	            "content-type": "application/json",
+	            "X-RapidAPI-Key": "4078f0f799mshc34f7bcc9992803p1abf2bjsn769e8d338733",
+	            "X-RapidAPI-Host": "text-analysis12.p.rapidapi.com"
+                }
+
+                summary_response = requests.post(summary_url, json=summary_payload, headers=summary_headers)
+                summary_data = summary_response.json()
+
+                summary = summary_data['summary']
+
+                await message.channel.send(
+                    f'{summary}'
                 )
             else:
                 await message.channel.send('Unknown command, try *help')  # Send an error message for an unknown command
