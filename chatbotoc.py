@@ -1,3 +1,5 @@
+# REMEMBER THE TOKEN!!!!!!
+# THAT MEANS DO NOT FORGET!!!!!
 import discord
 import random
 import json
@@ -57,7 +59,7 @@ def get_response(intents_list, intents_json):
             break
     return result
  
-TOKEN = "MTA0OTU3NTUwOTI2MjA5MDI3MA.GNmbmv.3FtPXFa8266TfIkrzpjLBbNIDoUR2hMMK-1-EM"
+TOKEN = "token"
  
 async def send_message(message, user_message, is_private):
     try:
@@ -74,7 +76,7 @@ async def send_message(message, user_message, is_private):
         print(e)
  
 def run_discord_bot():
-    TOKEN = "MTA0OTU3NTUwOTI2MjA5MDI3MA.GNmbmv.3FtPXFa8266TfIkrzpjLBbNIDoUR2hMMK-1-EM"
+    TOKEN = "token"
     intents = discord.Intents.default()
     intents.message_content = True
     client = discord.Client(intents=intents)
@@ -107,7 +109,7 @@ def run_discord_bot():
                     f'The current time in {location} is {current_time}')  # Send the special response
             elif cmdarry[0] == '*help':
                 await message.channel.send(
-                    "Here is a list of available commands:\n\n*time timezonehere\ntell the time in a given timezone\n\n*ltmzn\nshows a link to a list of valid time-zones.\n\n*weather yourlocationhere\nshows the current temperature and weather conditions for the city in question\n\n*translate langcodehere translationtexthere\ntranslate text into various languages\n\n*langlist\nsends a list of all valid language codes to translate to\n\n*define wordtodefinehere\ndefines a word\n\n*summarize yourinformationhere\nsummarizes a body of text\n\n*aniquo\nsends a random anime quote\n\n*roll\nrolls a die\n\n*flip\nflips a coin\n\n*rate thingtoratehere\nrates someone or something from 1-10"
+                    "Here is a list of available commands:\n\n*time timezonehere\ntell the time in a given timezone\n\n*ltmzn\nshows a link to a list of valid time-zones.\n\n*weather yourlocationhere\nshows the current temperature and weather conditions for the city in question\n\n*translate langcodehere translationtexthere\ntranslate text into various languages\n\n*langlist\nsends a list of all valid language codes to translate to\n\n*define wordtodefinehere\ndefines a word\n\n*summarize yourinformationhere\nsummarizes a body of text\n\n*aniquo\nsends a random anime quote\n\n*calc yourequationhere\ncalculate any equation (ex: 3*5)\n\n*roll\nrolls a die\n\n*flip\nflips a coin\n\n*rate thingtoratehere\nrates someone or something from 1-10"
                 )
             elif cmdarry[0] == '*tmznl':
                 time_zones = pytz.all_timezones
@@ -261,6 +263,22 @@ def run_discord_bot():
 
                 await message.channel.send(
                     f'{summary}'
+                )
+            elif cmdarry[0] == '*calc':
+                calc_url = "https://big-numbers-calculation.p.rapidapi.com/api/do"
+                calc_info = "".join(cmdarry[1:])
+                calc_payload = { "query": calc_info }
+                calc_headers = {
+	                        "content-type": "application/json",
+	                        "X-RapidAPI-Key": "4078f0f799mshc34f7bcc9992803p1abf2bjsn769e8d338733",
+	                        "X-RapidAPI-Host": "big-numbers-calculation.p.rapidapi.com"
+                }
+
+                calc_response = requests.post(calc_url, json=calc_payload, headers=calc_headers)
+                calc_data = calc_response.json()
+                solution = calc_data['body']
+                await message.channel.send(
+                    f'Solution: {solution}'
                 )
             else:
                 await message.channel.send('Unknown command, try *help')  # Send an error message for an unknown command
